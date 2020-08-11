@@ -1,6 +1,8 @@
 package com.lpc.learn.nio.codec;
 
+import com.alibaba.fastjson.JSON;
 import org.msgpack.MessagePack;
+import org.msgpack.template.Templates;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +23,9 @@ public class LearnMessagePackMain {
         src.add("1234567890");
         MessagePack messagePack = new MessagePack();
         byte[] raw = messagePack.write(src);
-        System.out.println(raw);
+        System.out.println("raw.length:"+raw.length+",raw:"+raw);
+        List<String> target =  messagePack.read(raw, Templates.tList(Templates.TString));
+
+        System.out.println(JSON.toJSONString(target));
     }
 }
