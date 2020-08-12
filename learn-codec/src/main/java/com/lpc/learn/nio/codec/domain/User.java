@@ -1,6 +1,7 @@
 package com.lpc.learn.nio.codec.domain;
 
 import lombok.Data;
+import org.msgpack.annotation.Message;
 
 /**
  * @author: 李鹏程
@@ -9,6 +10,7 @@ import lombok.Data;
  * @Time: 10:24
  * @Description:
  */
+@Message
 @Data
 public class User {
     String name;
