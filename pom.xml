@@ -10,13 +10,38 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>learn-codec</module>
+        <module>learn-netty-server</module>
+        <module>learn-netty-client</module>
     </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+    </parent>
 
     <properties>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--内部依赖-->
+            <dependency>
+                <groupId>com.lpc.learn.nio</groupId>
+                <artifactId>learn-codec</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.nio</groupId>
+                <artifactId>learn-netty-server</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lpc.learn.nio</groupId>
+                <artifactId>learn-netty-client</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <!--其他-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
