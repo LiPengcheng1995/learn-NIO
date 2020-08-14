@@ -2,6 +2,8 @@ package com.lpc.learn.nio.codec;
 
 import com.alibaba.fastjson.JSON;
 import com.lpc.learn.nio.codec.domain.User;
+import com.lpc.learn.nio.codec.service.MineCodec;
+import com.lpc.learn.nio.codec.service.impl.UserMsgPakCodecImpl;
 import org.msgpack.MessagePack;
 import org.msgpack.template.Templates;
 
@@ -24,22 +26,23 @@ public class LearnMessagePackMain {
         srcList.add("1234567890");
         MessagePack messagePack = new MessagePack();
         byte[] rawList = messagePack.write(srcList);
-        System.out.println("raw.length:"+rawList.length+",raw:"+rawList);
-        List<String> targetList =  messagePack.read(rawList, Templates.tList(Templates.TString));
+        System.out.println("raw.length:" + rawList.length + ",raw:" + rawList);
+        List<String> targetList = messagePack.read(rawList, Templates.tList(Templates.TString));
         System.out.println(JSON.toJSONString(targetList));
-
-
 
 
         User srcUser = new User();
         srcUser.setAge(100);
         srcUser.setName("张三");
         srcUser.setSex(true);
-
         byte[] rawUser = messagePack.write(srcUser);
-        System.out.println("raw.length:"+rawUser.length+",raw:"+rawUser);
-        User targetUser = messagePack.read(rawUser,User.class);
+        System.out.println("raw.length:" + rawUser.length + ",raw:" + rawUser);
+        User targetUser = messagePack.read(rawUser, User.class);
         System.out.println(JSON.toJSONString(targetUser));
+
+        MineCodec codec = new UserMsgPakCodecImpl();
+        User targetUser2 = (User) codec.decode(codec.encode(srcUser));
+        System.out.println(JSON.toJSONString(targetUser2));
 
     }
 }
