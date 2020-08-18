@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
-    private byte[] queryBytes = "请求当前时间".getBytes();
+    private byte[] queryBytes = "请求当前时间\r\n".getBytes();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -24,6 +24,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
             ByteBuf message= Unpooled.buffer(queryBytes.length);
             message.writeBytes(queryBytes);
             ctx.writeAndFlush(message);
+            log.info("完成发送一次请求");
         }
     }
 
