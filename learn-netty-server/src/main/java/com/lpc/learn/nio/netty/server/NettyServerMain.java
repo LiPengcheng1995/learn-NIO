@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Description:
  */
 @Slf4j
-public class Main {
+public class NettyServerMain {
     public static void main(String[] args) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();

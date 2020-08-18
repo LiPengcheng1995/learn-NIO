@@ -2,6 +2,8 @@ package com.lpc.learn.nio.netty.client.handler;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 
 /**
@@ -16,7 +18,10 @@ public class MineChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        socketChannel.pipeline().addLast(new TimeClientHandler());
+        socketChannel.pipeline()
+                .addLast(new LineBasedFrameDecoder(1024))
+                .addLast(new StringDecoder())
+                .addLast(new TimeClientHandler());
 
     }
 }

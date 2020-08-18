@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Description:
  */
 @Slf4j
-public class Main {
+public class NettyClinetMain {
     public static void main(String[] args) {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
