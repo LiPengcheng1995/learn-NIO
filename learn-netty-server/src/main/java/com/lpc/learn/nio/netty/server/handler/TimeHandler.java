@@ -18,13 +18,15 @@ import lombok.extern.slf4j.Slf4j;
 public class TimeHandler extends ChannelInboundHandlerAdapter {
 
     private int count = 0;
+    String serverStr = "1234567890";
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         count++;
         String reqBody = (String) msg;
         log.error("收到请求,count:{},body:{}", count, reqBody);
-        String respBody = "当前时间" + String.valueOf(System.currentTimeMillis());
+        String respBody = "当前时间" + String.valueOf(System.currentTimeMillis()+serverStr);
         ByteBuf resp = Unpooled.copiedBuffer(respBody.getBytes());
         ctx.write(resp);
     }

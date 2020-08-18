@@ -16,7 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
-    private byte[] queryBytes = "请求当前时间\r\n".getBytes();
+    String serverStr = "!@#$%^&*()";
+
+    private byte[] queryBytes = ("请求当前时间"+serverStr).getBytes();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
