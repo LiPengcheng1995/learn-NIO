@@ -9,5 +9,6 @@ package com.lpc.learn.nio.codec.service;
  */
 public interface MineCodec {
     byte[] encode(Object data);
+
     Object decode(byte[] data);
 }

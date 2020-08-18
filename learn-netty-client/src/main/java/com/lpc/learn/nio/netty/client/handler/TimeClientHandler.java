@@ -1,5 +1,4 @@
-package com.lpc.learn.nio.netty.server.handler;
-
+package com.lpc.learn.nio.netty.client.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -11,27 +10,32 @@ import lombok.extern.slf4j.Slf4j;
  * @author: 李鹏程
  * @email: lipengcheng3@jd.com
  * @date: 2020/8/18
- * @Time: 16:15
+ * @Time: 17:11
  * @Description:
  */
 @Slf4j
-public class TimeHandler extends ChannelInboundHandlerAdapter {
+public class TimeClientHandler extends ChannelInboundHandlerAdapter {
+
+    private ByteBuf message;
+
+    TimeClientHandler() {
+        byte[] queryBytes = "请求当前时间".getBytes();
+        message = Unpooled.buffer(queryBytes.length);
+        message.writeBytes(queryBytes);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush(message);
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        String reqBody = new String(req, "UTF-8");
-        log.error("收到请求,body:{}", reqBody);
-        String respBody = "当前时间" + String.valueOf(System.currentTimeMillis());
-        ByteBuf resp = Unpooled.copiedBuffer(respBody.getBytes());
-        ctx.write(resp);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        ctx.flush();
+        String body = new String(req);
+        log.info("收到查询结果,body:{}", body);
     }
 
     @Override

@@ -23,18 +23,18 @@ public class Main {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
         try {
-            bootstrap.group(bossGroup,workerGroup)
+            bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG,1024)
+                    .option(ChannelOption.SO_BACKLOG, 1024)
                     .childHandler(new MineChannelInitializer());
             // 启动
             ChannelFuture future = bootstrap.bind(8081).sync();
             // 等待服务监听端口关闭
             future.channel().closeFuture().sync();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("服务运行失败");
-        }finally {
+        } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
