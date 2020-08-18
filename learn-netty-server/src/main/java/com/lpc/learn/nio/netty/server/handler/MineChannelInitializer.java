@@ -15,6 +15,6 @@ public class MineChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        socketChannel.pipeline().addLast(new UserInfoLogHandler());
+        socketChannel.pipeline().addLast(new TimeHandler());
     }
 }
