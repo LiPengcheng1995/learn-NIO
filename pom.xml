@@ -12,6 +12,8 @@
         <module>learn-codec</module>
         <module>learn-netty-server</module>
         <module>learn-netty-client</module>
+        <module>learn-aio-client</module>
+        <module>learn-aio-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
