@@ -17,6 +17,7 @@
         <module>lean-netty-http-server</module>
         <module>lean-netty-http-server</module>
         <module>learn-netty-http-server</module>
+        <module>learn-netty-webSocket-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
