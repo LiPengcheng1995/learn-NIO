@@ -20,6 +20,7 @@ public class HttpServerHandlerInitializer extends ChannelInitializer<SocketChann
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         socketChannel.pipeline()
                 .addLast("http-decoder", new HttpRequestDecoder());
+        // 将1个 HTTP 的请求的多个部分合并成一个完整的 http 消息
         socketChannel.pipeline()
                 .addLast("http-aggregator", new HttpObjectAggregator(65536));
         socketChannel.pipeline()
