@@ -25,6 +25,7 @@ public class NettyServerMain {
         try {
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
+                    // 内核为此服务的端口提供的连接队列的最大个数【此队列是"TCP握手连接中的"+"握手完成等待程序accept的"的总和】
                     .option(ChannelOption.SO_BACKLOG, 1024)
                     .childHandler(new MineChannelInitializer());
             // 启动
