@@ -40,7 +40,20 @@ public class BlockClient {
             buffer.clear();
         }
 
-        // 5. 关闭流
+        // 5. 通知服务端，写完了
+        socketChannel.shutdownOutput();
+
+        // 6. 接受服务端返回信息
+        while (socketChannel.read(buffer) != -1) {
+
+            // 在读之前都要切换成读模式
+            buffer.flip();
+            System.out.println(new String(buffer.array(),0,buffer.limit()));
+            // 读完切换成写模式，能让管道继续读取文件的数据
+            buffer.clear();
+        }
+
+        // 7. 关闭流
         fileChannel.close();
         socketChannel.close();
     }

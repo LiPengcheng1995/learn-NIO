@@ -46,8 +46,15 @@ public class BlockServer {
             buffer.clear();
 
         }
+        // 7.写返回结果
+        buffer.put("server have received the data".getBytes());
+        buffer.flip();
+        client.write(buffer);
+        buffer.clear();
 
-        // 7.关闭通道
+        // TODO 这里写完会显式关闭连接，等于通知客户端写完了。如果不直接关闭，需要参考 learn.nio.block.client.BlockClient 的 socketChannel.shutdownOutput();
+        // TODO 显式通知一下
+        // 8.关闭通道
         outChannel.close();
         client.close();
         server.close();
