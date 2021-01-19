@@ -16,6 +16,8 @@ import java.util.Iterator;
  * @Description: 依靠 NIO 的 Selector 实现了非阻塞的调用，但是从实际执行上来说，轮询线程和处理线程没有做到分离，和 BIO 差不太多。
  * 另外，存在读半包的操作。可以看一下。
  */
+// TODO 客户端的SocketChannel支持 OP_CONNECT, OP_READ, OP_WRITE三个操作。
+// TODO 服务端ServerSocketChannel只支持OP_ACCEPT操作，在服务端由ServerSocketChannel的accept()方法产生的SocketChannel只支持OP_READ, OP_WRITE操作。
 public class NoBlockServer {
 
     public static void main(String[] args) throws IOException {
