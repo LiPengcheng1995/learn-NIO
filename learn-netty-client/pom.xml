@@ -29,5 +29,21 @@
             <artifactId>netty-all</artifactId>
         </dependency>
     </dependencies>
-
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>com.lpc.learn.nio.netty.client.NettyClinetMain</mainClass> <!-- 此处为主入口-->
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>

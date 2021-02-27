@@ -14,12 +14,8 @@
         <module>learn-netty-client</module>
         <module>learn-aio-client</module>
         <module>learn-aio-server</module>
-        <module>lean-netty-http-server</module>
-        <module>lean-netty-http-server</module>
         <module>learn-netty-http-server</module>
         <module>learn-netty-webSocket-server</module>
-        <module>learn-nio-block-client</module>
-        <module>learn-nio-block-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

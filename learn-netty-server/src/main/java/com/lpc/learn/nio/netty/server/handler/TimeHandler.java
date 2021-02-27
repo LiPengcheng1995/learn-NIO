@@ -40,4 +40,10 @@ public class TimeHandler extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         ctx.close();
     }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        log.info("连接关闭");
+        super.channelInactive(ctx);
+    }
 }
