@@ -16,6 +16,7 @@
         <module>learn-aio-server</module>
         <module>learn-netty-http-server</module>
         <module>learn-netty-webSocket-server</module>
+        <module>qwe</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
